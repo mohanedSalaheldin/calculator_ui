@@ -17,7 +17,6 @@ class CalculatorScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              flex: 1,
               child: Container(
                 width: double.infinity,
                 // color: Colors.red,
@@ -47,8 +46,11 @@ class CalculatorScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // SizedBox(
+            //   height: 30.0,
+            // ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Container(
                 width: double.infinity,
                 // color: Colors.redAccent,
@@ -57,9 +59,7 @@ class CalculatorScreen extends StatelessWidget {
                     Row(
                       children: [
                         defaultFullyRoundedButton(text: 'e'),
-                        const SizedBox(
-                          width: 25.0,
-                        ),
+                        defaultHorizentalSizedBox(),
                         defaultFullyRoundedButton(text: 'µ'),
                         defaultHorizentalSizedBox(),
                         defaultFullyRoundedButton(text: 'sin'),
@@ -75,21 +75,20 @@ class CalculatorScreen extends StatelessWidget {
                           textColor: HexColor('#6e6f6f'),
                         ),
                         defaultHorizentalSizedBox(),
-                        Expanded(
-                          child: Container(
-                            height: 80,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10)),
-                            child: MaterialButton(
-                              minWidth: 1.0,
-                              onPressed: () {},
-                              color: Colors.white,
-                              elevation: 0.0,
-                              child: Icon(
-                                Icons.backspace_outlined,
-                                color: HexColor('#6e6f6f'),
-                              ),
+                        Container(
+                          height: 80,
+                          width: 80,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: MaterialButton(
+                            // minWidth: 1.0,
+                            onPressed: () {},
+                            color: Colors.white,
+                            elevation: 0.0,
+                            child: Icon(
+                              Icons.backspace_outlined,
+                              color: HexColor('#6e6f6f'),
                             ),
                           ),
                         ),
@@ -106,35 +105,6 @@ class CalculatorScreen extends StatelessWidget {
                       ],
                     ),
                     defaultVerticalSizedBox(),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  defaultRoundedButton(
-                                    text: '/',
-                                    color: HexColor('#ade2ff'),
-                                  ),
-                                  defaultHorizentalSizedBox(),
-                                  defaultRoundedButton(
-                                    text: '/',
-                                    color: HexColor('#ade2ff'),
-                                  ),
-                                  defaultHorizentalSizedBox(),
-                                  defaultRoundedButton(
-                                    text: '/',
-                                    color: HexColor('#ade2ff'),
-                                    
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
                   ],
                 ),
               ),

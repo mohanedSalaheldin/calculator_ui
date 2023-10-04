@@ -23,6 +23,7 @@ Widget defaultFullyRoundedButton({
         ),
       ),
     );
+
 Widget defaultRoundedButton({
   required String text,
   Color? color = Colors.white,
@@ -31,10 +32,11 @@ Widget defaultRoundedButton({
     Expanded(
       child: Container(
         height: 80,
+        // width: 90,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         child: MaterialButton(
-          minWidth: 1.0,
+          // minWidth: 1.0,
           onPressed: () {},
           color: color,
           elevation: 0.0,
