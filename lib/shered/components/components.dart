@@ -26,12 +26,15 @@ Widget defaultFullyRoundedButton({
 
 Widget defaultRoundedButton({
   required String text,
+  double height = 80,
   Color? color = Colors.white,
   Color? textColor,
+  int flex = 1,
 }) =>
     Expanded(
+      flex: flex,
       child: Container(
-        height: 80,
+        height: height,
         // width: 90,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),

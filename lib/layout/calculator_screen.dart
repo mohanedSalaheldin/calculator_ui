@@ -1,15 +1,15 @@
 import 'package:calculator_ui/shered/components/components.dart';
 import 'package:calculator_ui/shered/styles/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:hexcolor/hexcolor.dart';
 
 class CalculatorScreen extends StatelessWidget {
-  const CalculatorScreen({super.key});
-
+  CalculatorScreen({super.key});
+  var controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    controller.text = '=12,400';
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -35,8 +35,10 @@ class CalculatorScreen extends StatelessWidget {
                     SizedBox(
                       height: 10.0,
                     ),
-                    Text(
-                      '=12,400',
+                    TextFormField(
+                      controller: controller,
+                      decoration: InputDecoration(border: InputBorder.none),
+                      textAlign: TextAlign.end,
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.w600,
@@ -75,20 +77,22 @@ class CalculatorScreen extends StatelessWidget {
                           textColor: HexColor('#6e6f6f'),
                         ),
                         defaultHorizentalSizedBox(),
-                        Container(
-                          height: 80,
-                          width: 80,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: MaterialButton(
-                            // minWidth: 1.0,
-                            onPressed: () {},
-                            color: Colors.white,
-                            elevation: 0.0,
-                            child: Icon(
-                              Icons.backspace_outlined,
-                              color: HexColor('#6e6f6f'),
+                        Expanded(
+                          child: Container(
+                            height: 80,
+                            width: 80,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10)),
+                            child: MaterialButton(
+                              // minWidth: 1.0,
+                              onPressed: () {},
+                              color: Colors.white,
+                              elevation: 0.0,
+                              child: Icon(
+                                Icons.backspace_outlined,
+                                color: HexColor('#6e6f6f'),
+                              ),
                             ),
                           ),
                         ),
@@ -105,6 +109,131 @@ class CalculatorScreen extends StatelessWidget {
                       ],
                     ),
                     defaultVerticalSizedBox(),
+                    Row(
+                      children: [
+                        defaultRoundedButton(
+                          text: '7',
+                        ),
+                        defaultHorizentalSizedBox(),
+                        defaultRoundedButton(
+                          text: '8',
+                        ),
+                        defaultHorizentalSizedBox(),
+                        defaultRoundedButton(
+                          text: '9',
+                        ),
+                        defaultHorizentalSizedBox(),
+                        defaultRoundedButton(
+                          text: '-',
+                          color: HexColor('#ade2ff'),
+                        ),
+                      ],
+                    ),
+                    defaultVerticalSizedBox(),
+                    Row(
+                      children: [
+                        defaultRoundedButton(
+                          text: '4',
+                        ),
+                        defaultHorizentalSizedBox(),
+                        defaultRoundedButton(
+                          text: '5',
+                        ),
+                        defaultHorizentalSizedBox(),
+                        defaultRoundedButton(
+                          text: '6',
+                        ),
+                        defaultHorizentalSizedBox(),
+                        defaultRoundedButton(
+                          text: '+',
+                          color: HexColor('#ade2ff'),
+                        ),
+                      ],
+                    ),
+                    defaultVerticalSizedBox(),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  defaultRoundedButton(
+                                    text: '1',
+                                  ),
+                                  defaultHorizentalSizedBox(),
+                                  defaultRoundedButton(
+                                    text: '2',
+                                  ),
+                                  defaultHorizentalSizedBox(),
+                                  defaultRoundedButton(
+                                    text: '3',
+                                  ),
+                                ],
+                              ),
+                              defaultVerticalSizedBox(),
+                              Row(
+                                children: [
+                                  defaultRoundedButton(
+                                    text: '0',
+                                  ),
+                                  defaultHorizentalSizedBox(),
+                                  Container(
+                                    height: 80,
+                                    // width: 90,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: MaterialButton(
+                                      // minWidth: 1.0,
+                                      onPressed: () {},
+                                      color: HexColor('#ade2ff'),
+                                      elevation: 0.0,
+                                      child: Text(
+                                        ".",
+                                        style: TextStyle(
+                                          color: defaultColor,
+                                          fontSize: 24,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        defaultHorizentalSizedBox(),
+                        // defaultRoundedButton(
+                        //   flex: 1,
+                        //   height: 160,
+                        //   text: '=',
+                        //   color: HexColor('#ade2ff'),
+                        // ),
+                        Container(
+                          height: 185,
+                          // width: 90,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: MaterialButton(
+                            // minWidth: 1.0,
+                            onPressed: () {},
+                            color: HexColor('#ade2ff'),
+                            elevation: 0.0,
+                            child: Text(
+                              "=",
+                              style: TextStyle(
+                                color: defaultColor,
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
