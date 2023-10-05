@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 Widget defaultFullyRoundedButton({
   required String text,
+  Function()? onPressed,
 }) =>
     Expanded(
       child: Container(
@@ -30,17 +31,16 @@ Widget defaultRoundedButton({
   Color? color = Colors.white,
   Color? textColor,
   int flex = 1,
+  required Function()? onPressed,
 }) =>
     Expanded(
       flex: flex,
       child: Container(
         height: height,
-        // width: 90,
         clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
         child: MaterialButton(
-          // minWidth: 1.0,
-          onPressed: () {},
+          onPressed: onPressed,
           color: color,
           elevation: 0.0,
           child: Text(
