@@ -16,7 +16,7 @@ class CalculatorCubit extends Cubit<CalculatorStates> {
   }
 
   void removeCharacter() {
-    if (mainText != null && mainText.length > 0) {
+    if (mainText.isNotEmpty) {
       mainText = mainText.substring(0, mainText.length - 1);
     }
     emit(CharRemovedState());
@@ -37,5 +37,24 @@ class CalculatorCubit extends Cubit<CalculatorStates> {
     secondaryText = mainText;
     mainText = '=${(result - result.floor() == 0 ? result.floor() : result)}';
     emit(CalculateResultState());
+  }
+
+  void reuseAnswer() {
+    if (mainText.isNotEmpty) {
+      mainText = mainText.substring(1, mainText.length);
+    }
+    emit(ReuseAnswerState());
+  }
+
+  void reverseSignal() {
+    for (var i = mainText.length - 1; i < 0; i--) {
+      if (mainText[i].contains('/') ||
+          mainText[i].contains('-') ||
+          mainText[i].contains('+') ||
+          mainText[i].contains('*')) {
+        mainText.split('');
+      }
+    }
+    emit(ReuseAnswerState());
   }
 }
