@@ -83,13 +83,33 @@ class CalculatorScreen extends StatelessWidget {
                           defaultVerticalSizedBox(),
                           Row(
                             children: [
-                              defaultFullyRoundedButton(text: ' -/+'),
+                              defaultFullyRoundedButton(
+                                text: 'Ans',
+                                onPressed: () {
+                                  cubit.reuseAnswer();
+                                },
+                              ),
                               defaultHorizentalSizedBox(),
-                              defaultFullyRoundedButton(text: '%'),
+                              defaultFullyRoundedButton(
+                                text: '-/+',
+                                onPressed: () {
+                                  cubit.reverseSignal();
+                                },
+                              ),
                               defaultHorizentalSizedBox(),
-                              defaultFullyRoundedButton(text: '√'),
+                              defaultFullyRoundedButton(
+                                text: '√',
+                                onPressed: () {
+                                  cubit.addCharacter('^.5');
+                                },
+                              ),
                               defaultHorizentalSizedBox(),
-                              defaultFullyRoundedButton(text: 'x²'),
+                              defaultFullyRoundedButton(
+                                text: 'x²',
+                                onPressed: () {
+                                  cubit.addCharacter('^2');
+                                },
+                              ),
                             ],
                           ),
                           defaultVerticalSizedBox(),

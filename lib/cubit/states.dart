@@ -7,4 +7,7 @@ class CharAddedState extends CalculatorStates {}
 class CharRemovedState extends CalculatorStates {}
 
 class ClearAllState extends CalculatorStates {}
+
 class CalculateResultState extends CalculatorStates {}
+
+class ReuseAnswerState extends CalculatorStates {}
