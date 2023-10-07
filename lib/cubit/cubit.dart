@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:calculator_ui/cubit/states.dart';
+import 'package:calculator_ui/main.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:math_expressions/math_expressions.dart';
 
@@ -47,14 +50,28 @@ class CalculatorCubit extends Cubit<CalculatorStates> {
   }
 
   void reverseSignal() {
-    for (var i = mainText.length - 1; i < 0; i--) {
-      if (mainText[i].contains('/') ||
-          mainText[i].contains('-') ||
-          mainText[i].contains('+') ||
-          mainText[i].contains('*')) {
-        mainText.split('');
+    var list = mainText.split('');
+
+    for (var i = list.length - 1; i >= 0; i--) {
+      if (list[i].contains('+') ||
+          list[i].contains('-') ||
+          list[i].contains('*') ||
+          list[i].contains('/')) {
+        if (list[i].contains('-')) {
+          list[i] = '+';
+        } else if (list[i].contains('+')) {
+          list[i] = '-';
+        } else {
+          list.insert(i + 1, '-');
+        }
       }
     }
+    mainText = '';
+    list.forEach(
+      (element) {
+        mainText += element;
+      },
+    );
     emit(ReuseAnswerState());
   }
 }
