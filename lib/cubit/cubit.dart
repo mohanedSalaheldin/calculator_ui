@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:calculator_ui/cubit/states.dart';
-import 'package:calculator_ui/main.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:math_expressions/math_expressions.dart';
 
@@ -33,13 +30,15 @@ class CalculatorCubit extends Cubit<CalculatorStates> {
 
   double result = 0;
   void calculateResult() {
-    Parser p = Parser();
-    Expression exp = p.parse(mainText);
-    ContextModel cm = ContextModel();
-    result = exp.evaluate(EvaluationType.REAL, cm);
-    secondaryText = mainText;
-    mainText = '=${(result - result.floor() == 0 ? result.floor() : result)}';
-    emit(CalculateResultState());
+    if (!mainText.contains('=')) {
+      Parser p = Parser();
+      Expression exp = p.parse(mainText);
+      ContextModel cm = ContextModel();
+      result = exp.evaluate(EvaluationType.REAL, cm);
+      secondaryText = mainText;
+      mainText = '=${(result - result.floor() == 0 ? result.floor() : result)}';
+      emit(CalculateResultState());
+    }
   }
 
   void reuseAnswer() {
@@ -67,11 +66,9 @@ class CalculatorCubit extends Cubit<CalculatorStates> {
       }
     }
     mainText = '';
-    list.forEach(
-      (element) {
-        mainText += element;
-      },
-    );
+    for (var element in list) {
+      mainText += element;
+    }
     emit(ReuseAnswerState());
   }
 }
