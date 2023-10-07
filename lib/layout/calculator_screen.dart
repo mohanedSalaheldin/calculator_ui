@@ -94,6 +94,9 @@ class CalculatorScreen extends StatelessWidget {
                                 text: '-/+',
                                 onPressed: () {
                                   cubit.reverseSignal();
+                                  // var list = ['1', '3'];
+                                  // list.insert(1, '2');
+                                  // print(list);
                                 },
                               ),
                               defaultHorizentalSizedBox(),
