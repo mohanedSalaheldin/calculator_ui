@@ -10,6 +10,13 @@ class CalculatorCubit extends Cubit<CalculatorStates> {
 
   static CalculatorCubit get(context) => BlocProvider.of(context);
 
+  // ThemeMode appTheme = ThemeMode.light;
+  bool isDark = false;
+  void changeTheme() {
+    isDark = !isDark;
+    emit(AppThemeChangeState());
+  }
+
   void addCharacter(String button) {
     mainText += button;
     emit(CharAddedState());
@@ -30,15 +37,18 @@ class CalculatorCubit extends Cubit<CalculatorStates> {
 
   double result = 0;
   void calculateResult() {
-    if (!mainText.contains('=')) {
-      Parser p = Parser();
-      Expression exp = p.parse(mainText);
-      ContextModel cm = ContextModel();
-      result = exp.evaluate(EvaluationType.REAL, cm);
-      secondaryText = mainText;
-      mainText = '=${(result - result.floor() == 0 ? result.floor() : result)}';
-      emit(CalculateResultState());
-    }
+    // print('Hi from Results');
+    String preExpression = mainText.replaceAll(RegExp(r'×'), '*');
+    preExpression = preExpression.replaceAll(RegExp(r'÷'), '/');
+    // mainText.replaceAll('', '/');
+    // print(preExpression);
+    Parser p = Parser();
+    Expression exp = p.parse(preExpression);
+    ContextModel cm = ContextModel();
+    result = exp.evaluate(EvaluationType.REAL, cm);
+    secondaryText = mainText;
+    mainText = '${(result - result.floor() == 0 ? result.floor() : result)}';
+    emit(CalculateResultState());
   }
 
   void reuseAnswer() {

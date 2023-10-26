@@ -11,3 +11,4 @@ class ClearAllState extends CalculatorStates {}
 class CalculateResultState extends CalculatorStates {}
 
 class ReuseAnswerState extends CalculatorStates {}
+class AppThemeChangeState extends CalculatorStates {}
